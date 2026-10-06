@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLar Fortaleza | Lúmina Construções Sustentáveis</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2d3729;
+            --accent: #b08d57;
+            --bg-off: #fbf9f6;
+            --card-bg: #ffffff;
+            --text-main: #2b2621;
+            --text-muted: #6b635b;
+            --border-color: #e8e2d5;
+            --lumina-green: #414833;
+            --lumina-gold: #c2a66e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-off);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Cabeçalho Flutuante Minimalista */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-logo h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .brand-logo h1 span {
+            color: var(--accent);
+        }
+
+        .brand-logo span.sub {
+            font-size: 0.55rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .btn-nav {
+            background-color: var(--lumina-green);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--lumina-gold);
+        }
+
+        /* Hero Banner com Vídeo de Fundo */
+        .hero-modern {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 8rem 1.5rem 4rem 1.5rem;
+            margin-top: 65px;
+            overflow: hidden;
+        }
+
+        /* Elemento de Vídeo de Fundo Fixo */
+        .hero-video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Camada escura sobre o vídeo para legibilidade do texto */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45,55,41,0.82), rgba(65,72,51,0.85));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 850px;
+        }
+
+        .hero-badge {
+            background: rgba(194, 166, 110, 0.25);
+            color: #f4e8c1;
+            border: 1px solid rgba(194, 166, 110, 0.5);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-modern h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-modern p {
+            font-size: 1.05rem;
+            max-width: 650px;
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-cta-gold {
+            background-color: var(--lumina-gold);
+            color: #ffffff;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(194,166,110,0.3);
+            transition: 0.3s;
+        }
+
+        .btn-cta-gold:hover {
+            transform: translateY(-2px);
+            background-color: #b09157;
+        }
+
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h3 {
+            font-size: 2rem;
+            color: var(--lumina-green);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Seção da Planta Baixa Digitalizada */
+        .plant-showcase {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .blueprint-digital-card {
+            background: #f4efe6;
+            border: 2px solid var(--lumina-green);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .blueprint-digital-row {
+            display: grid;
+            gap: 10px;
+        }
+
+        .blueprint-box {
+            background: #ffffff;
+            border: 1.5px dashed var(--lumina-gold);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .blueprint-box h6 {
+            font-size: 0.85rem;
+            color: var(--lumina-green);
+            font-weight: 700;
+        }
+
+        .blueprint-box span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .plant-details h4 {
+            font-size: 1.6rem;
+            color: var(--lumina-green);
+            margin-bottom: 1rem;
+        }
+
+        .plant-details p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .specs-list {
+            list-style: none;
+        }
+
+        .specs-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .specs-list li span:last-child {
+            color: var(--lumina-green);
+            font-weight: 700;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            background: rgba(65, 72, 51, 0.08);
+            color: var(--lumina-green);
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* SEÇÃO INSTITUCIONAL */
+        .institutional-section {
+            background-color: #f4efe6;
+            padding: 5rem 1.5rem;
+        }
+
+        .institutional-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media(min-width: 768px) {
+            .institutional-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .inst-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .inst-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .inst-card h4 {
+            font-size: 1.2rem;
+            color: var(--lumina-green);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .inst-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .values-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        @media(min-width: 768px) {
+            .values-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .values-list li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            word-break: break-word;
+        }
+
+        .values-list li strong {
+            color: var(--lumina-green);
+        }
+
+        /* Acordeões Modernos */
+        .faq-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 0.5rem;
+        }
+
+        details {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+
+        details[open] {
+            border-color: var(--lumina-gold);
+        }
+
+        summary {
+            padding: 1.2rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--lumina-green);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 1.3rem;
+            color: var(--lumina-gold);
+            font-weight: 700;
+        }
+
+        details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-body {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            color: var(--text-muted);
+            border-top: 1px solid #f2ecdf;
+            padding-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* SEÇÃO MINHA CASA MINHA VIDA */
+        .mcmv-section {
+            background: #ffffff;
+            padding: 5rem 1.5rem;
+        }
+
+        .mcmv-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        @media(min-width: 900px) {
+            .mcmv-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .mcmv-image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .mcmv-image-wrapper img.family-photo {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .mcmv-badge-floating {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: white;
+            padding: 6px 12px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .mcmv-badge-floating img.mcmv-logo-img {
+            height: 28px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .mcmv-content span.sub-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--lumina-gold);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .mcmv-content h3 {
+            font-size: 1.8rem;
+            color: var(--lumina-green);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .mcmv-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .mcmv-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .mcmv-feature-item span.icon {
+            font-size: 1.1rem;
+            background: #f4efe6;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .btn-mcmv {
+            background-color: var(--lumina-green);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 20px rgba(65, 72, 51, 0.25);
+            transition: 0.3s;
+        }
+
+        .btn-mcmv:hover {
+            transform: translateY(-2px);
+            background-color: var(--lumina-gold);
+            color: #2b2621;
+        }
+
+        /* SEÇÃO DE CONTATO / FORMULÁRIO */
+        .contact-section {
+            background-color: var(--lumina-green);
+            color: white;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .contact-container h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .contact-container p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: none;
+            background-color: #ffffff;
+            color: #2b2621;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(194, 166, 110, 0.4);
+        }
+
+        .btn-submit {
+            background-color: var(--lumina-gold);
+            color: #2b2621;
+            border: none;
+            padding: 0.8rem 2.2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-block;
+            transition: 0.2s;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: #b09157;
+            color: white;
+        }
+
+        .contact-footer-brand {
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+        }
+
+        .contact-footer-brand h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+            color: #ffffff;
+        }
+
+        .contact-footer-brand p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-bottom: 0;
+        }
+
+        footer {
+            background: #252c20;
+            color: #9ba696;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+        }
+
+        footer span {
+            color: var(--lumina-gold);
+            font-weight: 600;
+        }
+
+        @media(max-width: 768px) {
+            nav { display: none; }
+            .hero-modern h2 { font-size: 1.9rem; }
+            .plant-showcase { grid-template-columns: 1fr; padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Minimalista Moderno -->
+    <header>
+        <div class="brand-logo">
+            <h1>Lúmina <span>EcoLar</span></h1>
+            <span class="sub">Construções Sustentáveis</span>
+        </div>
+        <nav>
+            <a href="#projeto">O Projeto</a>
+            <a href="#planta">Planta Baixa</a>
+            <a href="#institucional">Quem Somos</a>
+            <a href="#mcmv">Minha Casa Minha Vida</a>
+            <a href="#contato" class="btn-nav">Pré-Inscrição</a>
+        </nav>
+    </header>
+
+    <!-- Hero Moderno com Vídeo em Loop -->
+    <section class="hero-modern">
+        <!-- Vídeo de Fundo -->
+        <video autoplay muted loop playsinline class="hero-video-bg">
+            <source src="44305.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
+        <!-- Overlay escuro para contraste -->
+        <div class="hero-overlay"></div>
+
+        <!-- Conteúdo do Hero -->
+        <div class="hero-content">
+            <div class="hero-badge">Fortaleza • Ceará</div>
+            <h2>Moradia Digna, Conforto Térmico e Contas Praticamente Zero</h2>
+            <p>A Lúmina apresenta o EcoLar: um condomínio de casas ecológicas desenhado sob medida para revolucionar a habitação popular sustentável.</p>
+            <a href="#contato" class="btn-cta-gold">Fazer Pré-Cadastro da Família</a>
+        </div>
+    </section>
+
+    <!-- Seção da Planta Baixa Digitalizada -->
+    <section id="planta">
+        <div class="section-header">
+            <h3>Conheça o Tipo A — Padrão Eco</h3>
+            <p>Planta baixa oficial com aproveitamento inteligente do espaço e ventilação natural</p>
+        </div>
+
+        <div class="plant-showcase">
+            <!-- Planta Digitalizada Exata -->
+            <div class="blueprint-digital-card">
+                <div class="blueprint-digital-row" style="grid-template-columns: 1fr 1.3fr;">
+                    <div class="blueprint-box">
+                        <h6>Serviço</h6>
+                        <span>3,60 m²</span>
+                    </div>
+                    <div class="blueprint-box">
+                        <h6>Quarto 01</h6>
+                        <span>10,50 m²</span>
+                    </div>
+                </div>
+                <div class="blueprint-digital-row" style="grid-template-columns: 1fr 1.2fr;">
+                    <div class="blueprint-box">
+                        <h6>Cozinha</h6>
+                        <span>6,90 m²</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div class="blueprint-box" style="padding: 6px;">
+                            <h6>Banheiro</h6>
+                            <span>2,16 m²</span>
+                        </div>
+                        <div class="blueprint-box" style="padding: 6px;">
+                            <h6>Quarto 02</h6>
+                            <span>9,00 m²</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="blueprint-digital-row" style="grid-template-columns: 1.3fr 1fr;">
+                    <div class="blueprint-box">
+                        <h6>Estar / Jantar</h6>
+                        <span>17,37 m²</span>
+                    </div>
+                    <div class="blueprint-box">
+                        <h6>Varanda</h6>
+                        <span>3,60 m²</span>
+                    </div>
+                </div>
+                <div class="blueprint-digital-row" style="grid-template-columns: 1fr;">
+                    <div class="blueprint-box" style="background: #e9f2ec; border-style: solid;">
+                        <h6>Jardim Frontal</h6>
+                        <span>-0,15m</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detalhes e Metragens Oficiais -->
+            <div class="plant-details">
+                <span class="tag-pill">Exclusivo Lúmina</span>
+                <h4>Layout Funcional de 2 Quartos</h4>
+                <p>Ambientes planejados para otimizar a circulação do vento em Fortaleza, garantindo frescor constante, conforto térmico e eficiência.</p>
+                <ul class="specs-list">
+                    <li><span>Área da Casa</span> <span>59,44 m²</span></li>
+                    <li><span>Estar / Jantar</span> <span>17,37 m²</span></li>
+                    <li><span>Quarto 01 (Casal)</span> <span>10,50 m²</span></li>
+                    <li><span>Quarto 02</span> <span>9,00 m²</span></li>
+                    <li><span>Cozinha</span> <span>6,90 m²</span></li>
+                    <li><span>Serviço / Varanda</span> <span>7,20 m²</span></li>
+                    <li><span>Banheiro Social</span> <span>2,16 m²</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO INSTITUCIONAL: MISSÃO, VISÃO E VALORES -->
+    <section id="institucional" class="institutional-section">
+        <div class="section-header">
+            <h3>Quem Somos</h3>
+            <p>Conheça os princípios que movem a Lúmina Construções Sustentáveis</p>
+        </div>
+
+        <div class="institutional-grid">
+            <div class="inst-card">
+                <h4>🎯 Missão</h4>
+                <p>Construir espaços de qualidade que unam inovação, conforto e sustentabilidade, contribuindo para um futuro melhor e para a preservação do meio ambiente.</p>
+            </div>
+            
+            <div class="inst-card">
+                <h4>🔭 Visão</h4>
+                <p>Ser referência em construção sustentável, oferecendo soluções inovadoras e acessíveis que transformem a forma de construir e viver.</p>
+            </div>
+
+            <div class="inst-card full-width">
+                <h4>💎 Nossos Valores</h4>
+                <ul class="values-list">
+                    <li><strong>Sustentabilidade:</strong> reduzir impactos ambientais e utilizar os recursos de forma consciente.</li>
+                    <li><strong>Inovação:</strong> buscar novas tecnologias e soluções para construir melhor.</li>
+                    <li><strong>Qualidade:</strong> entregar obras seguras, duráveis e eficientes.</li>
+                    <li><strong>Responsabilidade:</strong> agir com ética e respeito às pessoas e ao meio ambiente.</li>
+                    <li><strong>Compromisso:</strong> cumprir prazos e manter a confiança dos clientes.</li>
+                    <li><strong>Consciência ambiental:</strong> valorizar a preservação da natureza em todas as etapas da construção.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE DÚVIDAS & TRANSPARÊNCIA (12 PERGUNTAS) -->
+    <section id="duvidas" style="background: #ffffff;">
+        <div class="section-header">
+            <h3>Dúvidas & Transparência do Projeto</h3>
+            <p>Clique em qualquer um dos tópicos abaixo para expandir e ler as respostas completas</p>
+        </div>
+
+        <div class="faq-wrapper" id="projeto">
+            <details>
+                <summary>01 — Qual problema da construção/moradia estamos tentando resolver?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">O Desafio</span>
+                    <p>Famílias de média e baixa renda sofrem com moradias precárias, termicamente quentes no clima de Fortaleza, e contas de luz e água abusivas que comprometem boa parte da renda familiar mensal.</p>
+                </div>
+            </details>
+            <details>
+                <summary>02 — Por que existe mercado para essa solução?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">A Oportunidade</span>
+                    <p>Há uma imensa demanda reprimida por habitação popular de qualidade no Ceará. Unir programas governamentais de incentivo à altíssima eficiência energética cria um modelo escalável e altamente necessário.</p>
+                </div>
+            </details>
+            <details>
+                <summary>03 — O que é o condomínio sustentável EcoLar?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Nossa Solução</span>
+                    <p>Um condomínio fechado planejado pela Lúmina para integrar segurança, senso de comunidade e sustentabilidade real. Mais do que casa própria: é liberdade financeira e dignidade.</p>
+                </div>
+            </details>
+            <details>
+                <summary>04 — Como serão as casas e as áreas comuns?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Produto</span>
+                    <p>Unidades otimizadas com ventilação cruzada natural, áreas de lazer arborizadas, praças de convivência, hortas comunitárias e espaços seguros e estruturados para as famílias.</p>
+                </div>
+            </details>
+            <details>
+                <summary>05 — Quais materiais e tecnologias serão utilizados?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Sustentabilidade</span>
+                    <p>Placas fotovoltaicas para geração de energia solar compartilhada, sistemas inteligentes de captação de água de chuva para reuso coletivo e materiais construtivos ecológicos de baixo impacto.</p>
+                </div>
+            </details>
+            <details>
+                <summary>06 — Para quem estamos construindo?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Público-Alvo</span>
+                    <p>Pessoas de média e baixa renda que buscam sair do aluguel e conquistar um patrimônio próprio, econômico, confortável e seguro em Fortaleza e Região Metropolitana.</p>
+                </div>
+            </details>
+            <details>
+                <summary>07 — Por que alguém escolheria o EcoLar?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Nosso Diferencial</span>
+                    <p>Oferecemos o melhor custo-benefício do mercado, unindo uma redução drástica nas despesas fixas mensais (água e luz) com uma expressiva elevação na qualidade de vida.</p>
+                </div>
+            </details>
+            <details>
+                <summary>08 — Como a empresa ganha dinheiro?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Modelo de Negócio</span>
+                    <p>Através da comercialização das unidades habitacionais aliada a subsídios de programas federais (Minha Casa, Minha Vida), escala construtiva e processos enxutos da Lúmina.</p>
+                </div>
+            </details>
+            <details>
+                <summary>09 — Quem são nossos parceiros estratégicos?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Ecossistema</span>
+                    <p>Fornecedores de materiais ecológicos, empresas de energia solar, gestores de resíduos, arquitetos, engenheiros, instituições financeiras e parceiros de tecnologias verdes.</p>
+                </div>
+            </details>
+            <details>
+                <summary>10 — Qual a viabilidade financeira e margem do projeto?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Viabilidade</span>
+                    <p>Engenharia de custos otimizada com baixo desperdício de matéria-prima, assegurando margens operacionais saudáveis para a Lúmina e preços finais extremamente acessíveis.</p>
+                </div>
+            </details>
+            <details>
+                <summary>11 — Qual impacto ambiental, social e econômico geramos?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Impacto Real</span>
+                    <p>Redução expressiva na pegada de carbono, emancipação financeira das famílias através da economia nas contas fixas e fomento ao desenvolvimento social sustentável na região.</p>
+                </div>
+            </details>
+            <details>
+                <summary>12 — Onde posso ver o protótipo e o modelo 3D?</summary>
+                <div class="faq-body">
+                    <span class="tag-pill">Protótipo</span>
+                    <p>Dispomos de maquete física detalhada e modelo 3D interativo do empreendimento disponíveis para apresentação em nosso escritório corporativo em Fortaleza.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- SEÇÃO MINHA CASA MINHA VIDA -->
+    <section id="mcmv" class="mcmv-section">
+        <div class="mcmv-grid">
+            <div class="mcmv-image-wrapper">
+                <img src="41123.jpg" alt="Família feliz" class="family-photo">
+                <div class="mcmv-badge-floating">
+                    <img src="41124.jpg" alt="Minha Casa Minha Vida Logo" class="mcmv-logo-img">
+                </div>
+            </div>
+            <div class="mcmv-content">
+                <span class="sub-title">Minha Casa Minha Vida</span>
+                <h3>O lar dos seus sonhos com parcelas que cabem no seu bolso</h3>
+                
+                <div class="mcmv-features">
+                    <div class="mcmv-feature-item">
+                        <span class="icon">📄</span>
+                        <span>Entrada facilitada</span>
+                    </div>
+                    <div class="mcmv-feature-item">
+                        <span class="icon">🏦</span>
+                        <span>Uso do FGTS</span>
+                    </div>
+                    <div class="mcmv-feature-item">
+                        <span class="icon">📉</span>
+                        <span>Juros mais baixos</span>
+                    </div>
+                    <div class="mcmv-feature-item">
+                        <span class="icon">💰</span>
+                        <span>Subsídios de até R$ 55.000</span>
+                    </div>
+                </div>
+
+                <a href="#contato" class="btn-mcmv">
+                    Simule gratuitamente &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="contact-section">
+        <div class="contact-container">
+            <h3>Cadastre-se</h3>
+            <p>Preencha o formulário e nossa equipe entrará em contato.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');">
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" class="form-control" required placeholder="Seu nome completo">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" class="form-control" required placeholder="(85) 99999-9999">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" class="form-control" required placeholder="seu@email.com">
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar</button>
+            </form>
+
+            <div class="contact-footer-brand">
+                <h4>LÚMINA</h4>
+                <div style="width: 50px; height: 2px; background: #ffffff; margin: 0.6rem auto;"></div>
+                <p>Um empreendimento com a qualidade Lúmina</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 <span>EcoLar</span> — Desenvolvido por <span>Lúmina Construções Sustentáveis</span>. Fortaleza / CE.</p>
+    </footer>
+
+</body>
+</html>
